@@ -10,6 +10,8 @@ class DitSeries:
         - le contenu de la colonne sous forme de Dictionnaire
         - La clé du Dictionnaire est un entier
         - La valeur du Dictionnaire est de n'importe quel type"""
+        self.name = name
+        self.data = data
 
     def __mul__(self, other: int) -> "DitSeries":
         """ Implementation de l'opération de multiplication.
@@ -17,6 +19,13 @@ class DitSeries:
         - La valeur renvoyée est de type DitSeries
         - Chaque élément de la série est multiplié par l'argument
         """
+        d = self.data
+        newd = {}
+        for dict_key, dict_value in d.items():
+            newd.update({dict_key: dict_value*other})
+        return newd
+
+
 
     def __div__(self, other: int) -> "DitSeries":
         """ Implementation de l'opération de division.
@@ -87,7 +96,7 @@ if __name__ == "__main__":
     ds2 = ds * 2
     print(ds2)    # <DitSeries: serie {0: 90, 1: 92, 2: 94}>
 
-    ds3 = ds2 + 5
+    """ds3 = ds2 + 5
     print(ds3)    # <DitSeries: serie {0: 95, 1: 97, 2: 99}>
 
     ds4 = ds3 > 95
@@ -116,4 +125,4 @@ if __name__ == "__main__":
     print(names)  # <DitSeries: names {0: 'foo', 1: 'bar', 2: 'baz'}>
 
     where = df["heights"] > 160
-    print(df["names"][where])  # <DitSeries: names {1: 'bar', 2: 'baz'}>
+    print(df["names"][where])  # <DitSeries: names {1: 'bar', 2: 'baz'}>"""
