@@ -25,27 +25,48 @@ class DitSeries:
             newd.update({dict_key: dict_value*other})
         return newd
 
-
-
-    def __div__(self, other: int) -> "DitSeries":
-        """ Implementation de l'opération de division.
+    """def __div__(self, other: int) -> "DitSeries":
+         Implementation de l'opération de division.
         - L'argument est de type entier
         - La valeur renvoyée est de type DitSeries
         - Chaque élément de la série est divisé par l'argument
-        """
+        
+        d = self.data
+        newd = {}
+        for dict_key, dict_value in d.items():
+            newd.update({dict_key: dict_value / other})
+        return newd"""
 
     def __sub__(self, other: int) -> "DitSeries":
         """Soustraction """
-
+        d = self.data
+        newd = {}
+        for dict_key, dict_value in d.items():
+            newd.update({dict_key: dict_value - other})
+        return newd
 
     def __add__(self, other: int) -> "DitSeries":
         """Addition"""
+        d = self.data
+        newd = {}
+        for dict_key, dict_value in d.items():
+            newd.update({dict_key: dict_value + other})
+        return newd
 
     def __gt__(self, other: int) -> "DitSeries":
         """Comparaison (supérieur) """
+        d = self.data
+        newd = {}
+        for dict_key, dict_value in d.items():
+            if dict_value > other:
+                newd.update({dict_key: True})
+            else:
+                newd.update({dict_key: False})
+        return newd
 
     def __getitem__(self, key: "DitSeries") -> "DitSeries":
         """ """
+        return self.data[key]
 
     def __repr__(self) -> str:
         """ Affiche une representation de l'objet DitSeries. """
@@ -97,12 +118,12 @@ if __name__ == "__main__":
     print(ds2)    # <DitSeries: serie {0: 90, 1: 92, 2: 94}>
 
     """ds3 = ds2 + 5
-    print(ds3)    # <DitSeries: serie {0: 95, 1: 97, 2: 99}>
+    print(ds3) """   # <DitSeries: serie {0: 95, 1: 97, 2: 99}>
 
-    ds4 = ds3 > 95
+    ds4 = ds > 45
     print(ds4)   # <DitSeries: serie {0: False, 1: True, 2: True}>
 
-    df = DitDataFrame(
+    """df = DitDataFrame(
         {
             "id": [18, 23, 11],
             "names": ["foo", "bar", "baz"],
