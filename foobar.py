@@ -25,17 +25,17 @@ class DitSeries:
             newd.update({dict_key: dict_value*other})
         return newd
 
-    """def __div__(self, other: int) -> "DitSeries":
-         Implementation de l'opération de division.
+    def __div__(self, other: int) -> "DitSeries":
+        """ Implementation de l'opération de division.
         - L'argument est de type entier
         - La valeur renvoyée est de type DitSeries
         - Chaque élément de la série est divisé par l'argument
-        
+        """
         d = self.data
         newd = {}
         for dict_key, dict_value in d.items():
             newd.update({dict_key: dict_value / other})
-        return newd"""
+        return newd
 
     def __sub__(self, other: int) -> "DitSeries":
         """Soustraction """
@@ -85,7 +85,9 @@ class DitDataFrame:
         - self.series_map, correspondra à un dictionnaire de type DitSeries
         - self.length, la longueur du DataFrame
         """
-
+        self.d = d
+        self.series_map = DitSeries
+        self.length = len(d)
 
     def __getitem__(self, key: str) -> DitSeries:
         return self.series_map[key]
